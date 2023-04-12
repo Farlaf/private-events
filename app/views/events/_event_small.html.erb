@@ -1,0 +1,9 @@
+<h3><%= link_to event.title, event %></h3>
+<%= link_to event do %>
+  <%= image_tag(event.title_image.variant(resize_to_limit: [200,100])) %>
+<% end %>
+<p>
+  <%= event.date %>
+  <br>
+  <%= event.location %>
+</p>
