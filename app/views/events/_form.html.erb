@@ -27,6 +27,7 @@
   </div>
   <br>
   <div>
+    <%= image_tag(event.title_image, style: "max-width: 100%;") if event.title_image.attached? %><br>
     <%= form.label :title_image, style: "display: block" %>
     <%= form.file_field :title_image %>
   </div>

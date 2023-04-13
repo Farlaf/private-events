@@ -1,6 +1,7 @@
+<% if current_user && current_user.id == @event.author.id %>
+  <div style="padding-bottom: 10px;">
+    <%= link_to "Edit this event", edit_event_path(@event) %> |
+    <%= button_to "Destroy this event", @event, method: :delete %>
+  </div>
+<% end %>
 <%= render @event %>
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", events_path %>
-  <%= button_to "Destroy this event", @event, method: :delete %>
-</div>

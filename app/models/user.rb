@@ -6,8 +6,9 @@ class User < ApplicationRecord
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
 
+  has_many :events
+
   def avatar_thubnail
-    # avatar.variant(resize: "150x150!").processed if avatar.attached?
     if avatar.attached?
       avatar.variant(resize_to_limit: [40,40]).processed
     end

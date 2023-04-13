@@ -16,7 +16,7 @@
       <div class="menu-links" style="display: flex; align-items: center; gap: 20px;">
         <%= link_to "New event", new_event_path %>
         <% if current_user %>
-          <%= link_to edit_user_registration_path, style: "display: flex; align-items: center; " do %>
+          <%= link_to edit_user_registration_path, style: "display: flex; align-items: center;" do %>
             <%= image_tag(current_user.avatar_thubnail, style: "margin-right: 5px;") %>
             <%= current_user.name %>
           <% end %>

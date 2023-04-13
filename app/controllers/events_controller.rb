@@ -18,11 +18,15 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    if current_user && current_user.id != @event.author.id 
+      redirect_to root_path, alert: "You can't edit thath event!."
+    end
   end
 
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    @event.author = current_user
 
     respond_to do |format|
       if @event.save

@@ -1,8 +1,10 @@
 <h3><%= link_to event.title, event %></h3>
 <%= link_to event do %>
-  <%= image_tag(event.title_image.variant(resize_to_limit: [200,100])) %>
+  <%= image_tag(event.title_image.variant(resize_to_limit: [200,100]))  if event.title_image.attached? %>
 <% end %>
 <p>
+  <span style="display: flex; align-items: center;"><%= image_tag(event.author.avatar_thubnail) %>&nbsp;<%= event.author.name %></span>
+  <br>
   <%= event.date %>
   <br>
   <%= event.location %>
