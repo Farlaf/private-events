@@ -4,4 +4,7 @@
     <%= button_to "Destroy this event", @event, method: :delete %>
   </div>
 <% end %>
-<%= render @event %>
+<div style="display: grid; gap: 20px; grid-template-columns: 1fr 150px">
+  <%= render @event %>
+  <%= render "subscriptions/subscriptions_list" %>
+</div>

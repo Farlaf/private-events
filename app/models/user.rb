@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   has_many :events
 
+  has_many :subscriptions
+  has_many :events, through: :subscriptions
+
   def avatar_thubnail
     if avatar.attached?
       avatar.variant(resize_to_limit: [40,40]).processed

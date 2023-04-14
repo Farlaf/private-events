@@ -1,0 +1,21 @@
+<div>
+  <% if @subscriptions.any? %>
+    <h3>Members:</h3>
+    <% @subscriptions.each do |subscription| %>
+      <div style= "display: flex; align-items: center; margin-bottom: 10px">
+        <%= image_tag(subscription.user.avatar_thubnail, style: "margin-right: 5px;") %>
+        <%= subscription.user.name %>
+      </div>
+    <% end %>
+  <% else %>
+    <h3>No Members</h3>
+  <% end %>
+  <% if @event.author.id != current_user.id %>
+    <%= form_with model: @subscription do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+      <%= f.submit "I'm go to event" %>
+      удалиться
+    <% end %>
+  <% end %>
+</div>
