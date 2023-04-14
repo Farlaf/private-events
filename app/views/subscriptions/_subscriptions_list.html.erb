@@ -10,12 +10,19 @@
   <% else %>
     <h3>No Members</h3>
   <% end %>
-  <% if @event.author.id != current_user.id %>
-    <%= form_with model: @subscription do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :event_id, value: @event.id %>
-      <%= f.submit "I'm go to event" %>
-      удалиться
+  <% if current_user && @event.author != current_user %>
+    <% if @subscriptions.exists?(user_id: current_user.id) %>
+      <%= form_with model: @subscription, method: :delete do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit "X | I won't come" %>
+      <% end %>
+    <% else %>
+      <%= form_with model: @subscription do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit "Y | I will go to event" %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

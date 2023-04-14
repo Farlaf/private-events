@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root "events#index"
 
   post "subscriptions", to: "subscriptions#create"
-  delete "subscriptions/:id", to: "subscriptions#destroy"
+  delete "subscriptions", to: "subscriptions#destroy"
   
 end
